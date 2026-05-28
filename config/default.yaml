@@ -1,0 +1,40 @@
+# AnyData Factory - default configuration.
+# Overlay with a YAML passed to `factory build --config <path>`.
+
+backend:
+  provider: deepseek
+  model: deepseek-v4-flash
+  base_url: https://api.deepseek.com
+  thinking: true
+  timeout_seconds: 60
+  max_retries: 2
+
+budgets:
+  max_cost_usd: 10.00
+  target_tokens: 100000
+
+concurrency:
+  generators: 8
+  verifiers: 4
+
+curation:
+  dedupe: true
+  similarity_threshold: 0.92
+  min_signal_strength: 0.5
+
+paths:
+  data_dir: ./data
+  checkpoints_dir: ./checkpoints
+
+review:
+  # Fraction of accepted candidates routed to the human-audit queue.
+  # Engine load-time validation REQUIRES > 0 for COMPARATIVE/JUDGMENT packs.
+  human_review_pct: 0.05
+
+pricing:
+  # Placeholder rates for DeepSeek-V4-Flash, in USD per 1M tokens.
+  # Verify against the live API price page before each run.
+  input_per_million: 0.27
+  cached_input_per_million: 0.07
+  output_per_million: 1.10
+  reasoning_per_million: 1.10

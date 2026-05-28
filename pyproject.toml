@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anydata-factory"
+version = "0.1.0"
+description = "Closed-loop, domain-agnostic dataset factory."
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.5",
+    "pyyaml>=6.0",
+    "openai>=1.30",
+    "typing-extensions>=4.7",
+]
+
+[project.optional-dependencies]
+gui = [
+    "PySide6>=6.7",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+factory = "factory.cli.main:main"
+factory-gui = "factory.gui.app:main"
+
+[tool.setuptools.packages.find]
+include = ["factory*"]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
