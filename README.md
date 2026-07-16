@@ -1,5 +1,9 @@
 # AnyData Factory
 
+> [!WARNING]
+> **Work in progress / proof of concept.** AnyData is under active development, incomplete, and not ready for production use.
+
+
 A closed-loop, domain-agnostic dataset factory. One command names a domain;
 the system generates candidate examples, verifies each one's correctness,
 grades and dedupes them, curates for coverage, and writes a versioned dataset
